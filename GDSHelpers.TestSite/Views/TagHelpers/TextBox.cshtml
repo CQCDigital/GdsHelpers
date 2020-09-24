@@ -1,0 +1,26 @@
+﻿@model GDSHelpers.TestSite.Models.SampleModel
+@{
+    ViewBag.Title = "Textbox";
+}
+
+<h2 gds>Textbox</h2>
+<form method="post">
+    <div class="app-example test">
+        <h3 gds>DisplayName provided & no CustomLabel</h3>
+        <gds-text-box for="InterestingFact" input-width-chars="20"></gds-text-box>
+        <br />
+        <h3 gds>No DisplayName & no CustomLabel</h3>
+        <gds-text-box for="Name"></gds-text-box>
+        <br />
+        <h3 gds>No DisplayName, but CustomLabel</h3>
+        <gds-text-box for="Name" custom-label="Custom Label"></gds-text-box>
+    </div>
+    <div class="app-example test">
+        <h3 gds>Custom label, hidden text and hint text</h3>
+        <gds-text-box for="Name" hidden-span="This is hidden text" custom-label="Custom Label with hidden text"   hint-text="This is the email address where documents and legal notices are sent"></gds-text-box>
+        <br />
+        <h3 gds>Empty display name, with Hidden span, gives empty label with hidden text</h3>
+        <gds-text-box for="EmptyDisplayName" hidden-span="This is hidden text without custom label"></gds-text-box>
+    </div>
+    <button gds>Test validation</button>
+</form>

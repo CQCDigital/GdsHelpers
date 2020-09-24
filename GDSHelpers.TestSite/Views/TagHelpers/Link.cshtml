@@ -1,0 +1,22 @@
+﻿@using GDSHelpers.Models
+@model object
+@{
+    ViewBag.Title = "Links";
+    BreadCrumbs bread = new BreadCrumbs(true, "Hoooome");
+    bread.Crumbs.Add(new Crumb("Links", "/some-page"));
+}
+
+@section BreadCrumbSection {
+    <gds-bread-crumbs bread-crumbs=@bread></gds-bread-crumbs>
+}
+
+<p gds>
+    <gds-link link-text="Back to Home page" href="/" target="_blank" add-hidden-text="true"></gds-link>
+</p>
+
+<p gds>
+    <gds-link link-text="Google.co.uk" href="http://www.google.co.uk/" target="_blank" add-hidden-text="true"></gds-link>
+    - view this source on this link.
+</p>
+
+<p gds>Depricated: <a gds asp-action="Tag" asp-route-tagView="ParagraphsLinksHeaders">See new tag helper</a></p>

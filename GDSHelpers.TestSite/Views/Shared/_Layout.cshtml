@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/govuk-frontend-3.7.0.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <gds-header>
+
+        <gds-header-container>
+            <div class="govuk-header__logo app-header__logo">
+                <img src="/images/cqc-logo.png" class="govuk-header__logotype-crown-fallback-image" alt="Care Quality Commission" />
+                <gds-logo></gds-logo>
+            </div>
+
+            <gds-header-content>
+                <span class="header_title">GDS TagHelpers for .NET Core (by CQC)</span>
+            </gds-header-content>
+
+        </gds-header-container>
+
+    </gds-header>
+
+    <gds-container>
+        <gds-phase-banner phase="Beta"
+                          title="Please leave your feedback"
+                          text="This is a demo site."
+                          url="@Url.Action("Index", "Home")"
+                          url-text="feedback">
+        </gds-phase-banner>
+
+        <gds-back-link link-text="Back" href="#" onclick="history.go(-1);return false;"></gds-back-link>
+
+        @if (IsSectionDefined(name: "BreadCrumbSection"))
+        {
+            // In layout pages, renders the content of a named section and specifies whether the section is required.
+            @RenderSection(name: "BreadCrumbSection")
+        }
+        
+
+        <gds-main-wrapper>
+            <gds-row>
+                <gds-column tablet-size="TwoThirds" desktop-size="FullWidth">
+                    @RenderBody()
+                </gds-column>
+            </gds-row>
+
+        </gds-main-wrapper>
+    </gds-container>
+
+    <gds-footer>
+        <gds-footer-container>
+            <gds-footer-container-meta>
+                <gds-footer-container-meta-item class="govuk-footer__meta-item--grow">
+
+                    <h2 class="govuk-visually-hidden">Example links</h2>
+                    <gds-ul class="govuk-footer__inline-list" list-id="footer-information-menu">
+                        <gds-li class="govuk-footer__inline-list-item" list-item-id="privacy">
+                            <a asp-action="Index" asp-controller="Home" class="govuk-footer__link" id="link_to_privacy_notice"
+                               target="_blank" title="Go to privacy notice" >Link 1</a>
+                        </gds-li>
+                        <gds-li class="govuk-footer__inline-list-item" list-item-id="cookies">
+                            <a asp-action="Index" asp-controller="Home" class="govuk-footer__link" id="link_to_cookies"
+                               target="_blank"  title="Go to cookies" >Link 2</a>
+                        </gds-li>
+                        <gds-li class="govuk-footer__inline-list-item" list-item-id="termsandconditions">
+                            <a gds id="LinkToCQCTermsAndConditionsStatement"
+                               title="Go to terms and conditions"
+                               class="govuk-footer__link"
+                               target="_blank"
+                               href="https://www.cqc.org.uk/about-us/our-policies/terms-conditions">
+                                Terms and Conditions
+                            </a>
+                        </gds-li>
+                        <gds-li class="govuk-footer__inline-list-item" list-item-id="copyright">
+                            &copy; Care Quality Commission @DateTime.Today.Year.ToString()
+                        </gds-li>
+                    </gds-ul>
+
+                </gds-footer-container-meta-item>
+            </gds-footer-container-meta>
+        </gds-footer-container>
+    </gds-footer>
+
+    <script src="~/js/govuk-frontend-3.7.0.min.js"></script>
+    <script>window.GOVUKFrontend.initAll()</script>
+</body>
+</html>

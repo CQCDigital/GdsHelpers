@@ -1,0 +1,11 @@
+﻿@model object
+@{
+    ViewBag.Title = "GDS Heading";
+}
+
+<gds-heading heading-type="H1" text="Headers"></gds-heading>
+
+<gds-heading heading-type="H2" text="Heading H2 (with existing class)" class="existing-class1"></gds-heading>
+<gds-heading heading-type="H3" text="Heading H3" />
+
+<p gds>Depricated: <a gds asp-action="Tag" asp-route-tagView="ParagraphsLinksHeaders">See new tag helper</a></p>

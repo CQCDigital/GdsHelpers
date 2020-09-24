@@ -1,0 +1,19 @@
+﻿@model GDSHelpers.TestSite.Models.SampleModel
+@{
+    ViewBag.Title = "Text Area";
+}
+
+<h1 gds>Text Area</h1>
+
+<form method="post">
+    <h2 gds>Standard</h2>
+    <code-sample name="TextArea/10_TextArea" />
+
+    <h2 gds>With counters</h2>
+    <code-sample name="TextArea/20_TextAreaCounter"></code-sample>
+
+    <h2 gds>With hints and labels</h2>
+    <code-sample name="TextArea/30_TextAreaLabels"></code-sample>
+    
+    <button gds>Test validation</button>
+</form>
