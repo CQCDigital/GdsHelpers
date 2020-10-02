@@ -1,4 +1,5 @@
 ﻿using Ganss.XSS;
+using System.Text.RegularExpressions;
 
 namespace GDSHelpers.Extensions
 {
@@ -26,12 +27,15 @@ namespace GDSHelpers.Extensions
         /// </summary>
         /// <param name="s">The string to check</param>
         /// <returns>The sanitized string</returns>
-        public static string StripHtml(this string s)
+        public static string StripHtml(this string str)
         {
-            if (string.IsNullOrEmpty(s)) return s;
+            if (string.IsNullOrEmpty(str)) return str;
 
             var htmlSanitizer = new HtmlSanitizer();
-            return htmlSanitizer.Sanitize(s);
+            str = htmlSanitizer.Sanitize(str);
+
+            var result = Regex.Replace(str, @"<[^>]*>", string.Empty);
+            return result;
         }
 
         /// <summary>
