@@ -129,6 +129,7 @@ namespace GDSHelpers
             var sb = new StringBuilder();
 
             sb.AppendLine($"<div {questionId} class=\"govuk-form-group {erroredCss} {showWhenCss}\" {showWhen}>");
+            sb.AppendLine($"<fieldset class=\"govuk-fieldset\" {ariaDescribedBy}>");
 
             if (isErrored && requiredIf)//places the error at the top of a group of required fields
                 sb.AppendLine($"<span id=\"{errorId}\" class=\"govuk-error-message\">{errorMsg}</span>");
@@ -143,6 +144,7 @@ namespace GDSHelpers
 
             sb.AppendLine($"<input class=\"govuk-input {erroredInputCss} {question.InputCss}\" id=\"{elementId}\" name=\"{elementId}\" type=\"{question.DataType}\" {ariaDescribedBy} value=\"{question.Answer}\">");
 
+            sb.AppendLine("</fieldset>");
             sb.AppendLine("</div>");
 
             return new HtmlString(sb.ToString());
@@ -196,6 +198,7 @@ namespace GDSHelpers
 
 
             sb.AppendLine($"<div {questionId} class=\"govuk-form-group {erroredCss} {showWhenCss}\" {showWhen}>");
+            sb.AppendLine($"<fieldset class=\"govuk-fieldset\" {ariaDescribedBy}>");
 
 
             // Adds our content in the correct order
@@ -207,6 +210,8 @@ namespace GDSHelpers
 
             sb.AppendLine($"<textarea class=\"govuk-textarea {erroredInputCss} {charCountClass} {question.InputCss}\" id=\"{elementId}\" " +
                       $"name=\"{elementId}\" rows=\"{inputHeight}\" {ariaDescribedBy}>{question.Answer}</textarea>");
+
+            sb.AppendLine("</fieldset>");
             sb.AppendLine("</div>");
 
             if (showCounter)
@@ -244,6 +249,12 @@ namespace GDSHelpers
             {
                 sb.AppendLine("<legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">");
                 sb.AppendLine($"<label id=\"{lblId}\" class=\"govuk-label gds-question\">{question.Question}</label>");
+                sb.AppendLine("</legend>");
+            }
+            if (!string.IsNullOrEmpty(question.ShortQuestion))
+            {
+                sb.AppendLine("<legend class=\"govuk-visually-hidden\">");
+                sb.AppendLine($"<span>{question.ShortQuestion}</span>");
                 sb.AppendLine("</legend>");
             }
 
@@ -458,6 +469,12 @@ namespace GDSHelpers
                         if (!string.IsNullOrEmpty(question.Question))
                         {
                             sb.AppendLine($"<label class=\"govuk-label gds-question\" for=\"{elementId}\">{question.Question}</label>");
+                        }
+                        if (!string.IsNullOrEmpty(question.ShortQuestion))
+                        {
+                            sb.AppendLine("<legend class=\"govuk-visually-hidden\">");
+                            sb.AppendLine($"<span>{question.ShortQuestion}</span>");
+                            sb.AppendLine("</legend>");
                         }
                         break;
 
