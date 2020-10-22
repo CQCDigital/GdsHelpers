@@ -247,14 +247,12 @@ namespace GDSHelpers
 
             if (!string.IsNullOrEmpty(question.Question))
             {
-                sb.AppendLine("<legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">");
+                sb.AppendLine("<span class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">");
                 sb.AppendLine($"<label id=\"{lblId}\" class=\"govuk-label gds-question\">{question.Question}</label>");
-                sb.AppendLine("</legend>");
-            }
-            if (!string.IsNullOrEmpty(question.ShortQuestion))
-            {
+                sb.AppendLine("</span>");
+
                 sb.AppendLine("<legend class=\"govuk-visually-hidden\">");
-                sb.AppendLine($"<span>{question.ShortQuestion}</span>");
+                sb.AppendLine($"<span>{question.Question}</span>");
                 sb.AppendLine("</legend>");
             }
 
@@ -365,9 +363,9 @@ namespace GDSHelpers
 
             if (!string.IsNullOrEmpty(question.Question))
             {
-                sb.AppendLine("<legend class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">");
+                sb.AppendLine("<span class=\"govuk-fieldset__legend govuk-fieldset__legend--xl\">");
                 sb.AppendLine($"<label id=\"{lblId}\" class=\"govuk-label gds-question\">{question.Question}</label>");
-                sb.AppendLine("</legend>");
+                sb.AppendLine("</span>");
             }
 
             if (!string.IsNullOrEmpty(question.AdditionalText))
@@ -469,11 +467,9 @@ namespace GDSHelpers
                         if (!string.IsNullOrEmpty(question.Question))
                         {
                             sb.AppendLine($"<label class=\"govuk-label gds-question\" for=\"{elementId}\">{question.Question}</label>");
-                        }
-                        if (!string.IsNullOrEmpty(question.ShortQuestion))
-                        {
+
                             sb.AppendLine("<legend class=\"govuk-visually-hidden\">");
-                            sb.AppendLine($"<span>{question.ShortQuestion}</span>");
+                            sb.AppendLine($"<span>{question.Question}</span>");
                             sb.AppendLine("</legend>");
                         }
                         break;
