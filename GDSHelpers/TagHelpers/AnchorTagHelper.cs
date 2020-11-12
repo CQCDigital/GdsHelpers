@@ -42,7 +42,7 @@ namespace GDSHelpers.TagHelpers
             {
                 return;
             }
-            var hiddenText = $" <span class=\"govuk-visually-hidden\">{content}</span>";
+            var hiddenText = $"<span class=\"govuk-visually-hidden\">{content}</span>";
             output.PostContent.AppendHtml(hiddenText);
         }
         
