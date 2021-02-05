@@ -20,12 +20,14 @@ namespace GDSHelpers.TagHelpers
             output.Attributes.SetAttribute("class", "govuk-notification-banner");
             output.Attributes.SetAttribute("id", "div_notification_banner");
            
-            var htmlTitle = $"<h2 class=\"govuk-notification-banner__title\" id=\"notification-banner-title\">{Title}</h2>";
-            
             var sb = new StringBuilder();
+            sb.AppendLine("<div class=\"govuk-notification-banner__header\">");
+            var htmlTitle = $"<h2 class=\"govuk-notification-banner__title\" id=\"notification-banner-title\">{Title}</h2>";
+
             sb.AppendLine(string.IsNullOrWhiteSpace(Title)? "" : htmlTitle);
-            sb.AppendLine("<div class=\"govuk-notification-banner__body\">");
-            sb.AppendLine($"<p>{Message}</p>");
+            sb.AppendLine("</div>");
+            sb.AppendLine("<div class=\"govuk-notification-banner__content\">");
+            sb.AppendLine($"<p class=\"govuk-notification-banner__heading\">{Message}</p>");
             sb.AppendLine("</div>");
             output.PostContent.SetHtmlContent(sb.ToString());
         }
