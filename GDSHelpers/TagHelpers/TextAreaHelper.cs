@@ -54,6 +54,9 @@ namespace GDSHelpers.TagHelpers
         [HtmlAttributeName("custom-label")]
         public string CustomLabel { get; set; }
 
+        [HtmlAttributeName("remove-label")]
+        public bool RemoveLabel { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.TagName = "div";
@@ -115,7 +118,10 @@ namespace GDSHelpers.TagHelpers
             };
 
             using var writer = new StringWriter();
-            modelBuilder.WriteLabel(writer, "", CustomLabel, UseH2ForLabel);
+            if (!RemoveLabel)
+            {
+                modelBuilder.WriteLabel(writer, "", CustomLabel, UseH2ForLabel);
+            }
 
             if (!string.IsNullOrEmpty(For.Metadata.Description) || !string.IsNullOrEmpty(HintText))
             {
